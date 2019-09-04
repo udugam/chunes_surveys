@@ -10,7 +10,7 @@ import { withStyles } from '@material-ui/core/styles';
 //Import Styles
 import styles from './styles.js'
 
-class App extends Component {
+class Survey1 extends Component {
 
   state= {
     survey1: false,
@@ -34,7 +34,6 @@ class App extends Component {
   render() {
     const {classes} = this.props
     return (
-        <Container className={classes.container} maxWidth="md">
           <Grid
             container
             direction="row"
@@ -61,9 +60,8 @@ class App extends Component {
               <Survey2 />
             }
           </Grid>
-        </Container>
     );
   }
 }
 
-export default withStyles(styles)(App);
+export default withStyles(styles)(Survey1);
