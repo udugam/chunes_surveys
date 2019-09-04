@@ -10,6 +10,9 @@ import { withStyles } from '@material-ui/core/styles';
 //Import Styles
 import styles from './styles.js'
 
+//Import Surveys
+import Survey1 from './Survey1'
+
 class App extends Component {
 
   state= {
@@ -55,11 +58,11 @@ class App extends Component {
               I haven't used Chunes
             </Button>
             {this.state.survey1 && 
-              <Survey1 />
+              <Survey1 handleInputChange={this.handleInputChange} {...this.state}/>
             }
-            {this.state.survey2 && 
+            {/* {this.state.survey2 && 
               <Survey2 />
-            }
+            } */}
           </Grid>
         </Container>
     );
