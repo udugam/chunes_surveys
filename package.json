@@ -23,8 +23,11 @@
   "homepage": "https://github.com/udugam/chunes_surveys#readme",
   "dependencies": {
     "@material-ui/core": "^4.4.0",
+    "dotenv": "^8.1.0",
     "express": "^4.17.1",
+    "googleapis": "^42.0.0",
     "if-env": "^1.0.4",
+    "nodemailer": "^6.3.0",
     "path": "^0.12.7"
   },
   "devDependencies": {

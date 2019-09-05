@@ -63,7 +63,7 @@ class Survey1 extends Component {
             <Grid className={classes.question}>
               <FormControl className={classNames(classes.margin, classes.textFieldLarge)}>
                 <Typography variant="h6">
-                In the last month, how times did you share music with your friends?
+                In the last month, how many times did you share music with your friends?
                 </Typography>
                 <Select
                     value={this.props.s1q3}

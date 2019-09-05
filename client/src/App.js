@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -12,6 +12,7 @@ import styles from './styles.js'
 
 //Import Surveys
 import Survey1 from './Survey1'
+import Survey2 from './Survey2'
 
 //Import API
 import API from './API.js'
@@ -29,10 +30,10 @@ class App extends Component {
   }
 
   submitAnswers = () => {
-    API.submit(this.state)
+    API.submit(this.state, window.location.href)
         .then(res=> {
-          if(res===true) {
-            console.log("success!")
+          if(res.data===true) {
+            this.setState({survey1:false, survey2:false, submitted:true})
           }
         })
         .catch(err=>{console.log(err)})
@@ -64,22 +65,36 @@ class App extends Component {
                 can use this insight to help structure, re-think, re-evaluate the 
                 application.
             </Typography>
-            <Button onClick={()=>this.handleSurveySelection('survey1')} className={classes.button} variant="contained" color="primary">
-              I have used Chunes
-            </Button>
-            <Button onClick={()=>this.handleSurveySelection('survey2')} className={classes.button} variant="contained" color="primary">
-              I haven't used Chunes
-            </Button>
+
+           {!this.state.submitted && 
+              <Fragment>
+                <Button onClick={()=>this.handleSurveySelection('survey1')} className={classes.button} variant="contained" color={this.state.survey1 ? "primary" : "secondary"}>
+                  I have used Chunes
+                </Button>
+                <Button onClick={()=>this.handleSurveySelection('survey2')} className={classes.button} variant="contained" color={this.state.survey2 ? "primary" : "secondary"}>
+                  I haven't used Chunes
+                </Button>
+              </Fragment>
+            }
+
             {this.state.survey1 && 
               <Survey1 handleInputChange={this.handleInputChange} {...this.state}/>
             }
-            {/* {this.state.survey2 && 
-              <Survey2 />
-            } */}
+            {this.state.survey2 && 
+              <Survey2 handleInputChange={this.handleInputChange} {...this.state}/>
+            }
 
-            <Button onClick={()=>this.submitAnswers()} className={classes.button} variant="contained" color="primary">
-              Submit
-            </Button>
+            {(this.state.survey1 || this.state.survey2) && 
+              <Button onClick={()=>this.submitAnswers()} className={classes.button} variant="contained" color="primary">
+                Submit
+              </Button>
+            }
+
+            {this.state.submitted && 
+              <Typography variant="h4">
+                Thank You!
+              </Typography>
+            }
           </Grid>
         </Container>
     );

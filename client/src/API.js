@@ -2,8 +2,8 @@ import axios from 'axios'
 
 export default {
 
-    submit: function(answers) {
-        return axios.post(`/api/survey`, {answers})
+    submit: function(answers, id) {
+        return axios.post(`/api/survey`, {answers, id})
     },
  
 }
