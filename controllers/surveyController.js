@@ -9,7 +9,7 @@ module.exports = {
 
         const mailOptions = {
             from: "purekitchensportal@gmail.com",
-            to: 'ryan.udugam@gmail.com',
+            to: 'chunesmusicapp@gmail.com',
             subject: `A Survey Has Been Completed!`,
             generateTextFromHTML: true,
             html: emailBody
