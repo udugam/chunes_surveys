@@ -13,6 +13,9 @@ import styles from './styles.js'
 //Import Surveys
 import Survey1 from './Survey1'
 
+//Import API
+import API from './API.js'
+
 class App extends Component {
 
   state= {
@@ -23,6 +26,16 @@ class App extends Component {
   handleInputChange = keyName => event => {
     const keyValue = event.target.value     
     this.setState({[keyName]:keyValue})
+  }
+
+  submitAnswers = () => {
+    API.submit(this.state)
+        .then(res=> {
+          if(res===true) {
+            console.log("success!")
+          }
+        })
+        .catch(err=>{console.log(err)})
   }
 
   handleSurveySelection = survey => {
@@ -63,6 +76,10 @@ class App extends Component {
             {/* {this.state.survey2 && 
               <Survey2 />
             } */}
+
+            <Button onClick={()=>this.submitAnswers()} className={classes.button} variant="contained" color="primary">
+              Submit
+            </Button>
           </Grid>
         </Container>
     );

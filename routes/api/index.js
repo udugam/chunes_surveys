@@ -1,6 +1,9 @@
 //Import Dependencies
 const router = require('express').Router()
+const surveyController = require('../../controllers/surveyController.js')
 
-//Import model specific api routes here
+//Matches with '/api/survey'
+router.route('/survey')
+    .post(surveyController.submit)
 
 module.exports = router
